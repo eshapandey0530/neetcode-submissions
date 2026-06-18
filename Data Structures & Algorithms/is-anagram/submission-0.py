@@ -1,0 +1,19 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        
+        hmap_s = {}
+        hmap_t = {}
+
+        for i in s:
+            if i in hmap_s:
+                hmap_s[i] += 1
+            else:
+                hmap_s[i] = 1
+
+        for i in t:
+            if i in hmap_t:
+                hmap_t[i] += 1
+            else:
+                hmap_t[i] = 1
+
+        return hmap_t == hmap_s
