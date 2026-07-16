@@ -1,22 +1,27 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
 
+        # if s == '' and t == '':
+        #     return True
         if len(s) != len(t):
             return False
+
+        s_count = {}
+        t_count = {}
+
+        for letter in s:
+            if letter in s_count:
+                s_count[letter] += 1
+            else:
+                s_count[letter] = 1
         
-        hmap_s = {}
-        hmap_t = {}
-
-        for i in s:
-            if i in hmap_s:
-                hmap_s[i] += 1
+        for letter in t:
+            if letter in t_count:
+                t_count[letter] += 1
             else:
-                hmap_s[i] = 1
+                t_count[letter] = 1
 
-        for i in t:
-            if i in hmap_t:
-                hmap_t[i] += 1
-            else:
-                hmap_t[i] = 1
-
-        return hmap_t == hmap_s
+        if s_count == t_count:
+            return True
+        else:
+            return False
