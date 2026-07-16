@@ -1,24 +1,19 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        
-        hmap = {}
+        # 'act' - ['act', 'cat']
 
-        n = len(strs)
+        strHashmap = {}
 
         for s in strs:
-            l = sorted(s)
-            key = ''
-            for i in l: key += i
-
-            if key in hmap:
-                hmap[key].append(s)
+            key = "".join(sorted(s))
+            if key in strHashmap:
+                strHashmap[key].append(s)
             else:
-                hmap[key] = [s]
+                strHashmap[key] = [s]
 
         res = []
 
-        for key in hmap:
-            res.append(hmap[key])
+        for value in strHashmap.values():
+            res.append(value)
 
         return res
-                
